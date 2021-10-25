@@ -1,22 +1,26 @@
 {
+  // 编译选项
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "strict": true,
-    "jsx": "preserve",
-    "importHelpers": true,
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "baseUrl": ".",
-    "types": ["webpack-env"],
+    "target": "esnext", // 目标代码（ts -> js）
+    "module": "esnext", // 目标代码需要使用的模块化方案
+    "strict": true, // 使用严格模式
+    "jsx": "preserve", // 对jsx进行怎么样的处理 （preserve：保留原来的样子）
+    "importHelpers": true, // 辅助的导入功能
+    "moduleResolution": "node", // 按照node的方式去解析模块 import "/index.js"
+    "skipLibCheck": true, // 跳过一些库的类型检测（axios -> 类型）
+    "esModuleInterop": true, // export default/module.export ={} 是否可以混合使用
+    "allowSyntheticDefaultImports": true, //同上
+    "sourceMap": true, // 要不要生成映射文件（ts -> js）
+    "baseUrl": ".", // 文件路径在解析时，基本url
+    "types": ["webpack-env"], // 指定具体要解析使用的类型
+    // 编译阶段路径解析
     "paths": {
       "@/*": ["src/*"]
     },
+    // 可以指定在项目中可以使用哪些库的类型（Proxy/Window/Document）
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
+  // 哪些代码需要经过编译解析的
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
@@ -24,5 +28,6 @@
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],
+  // 排除
   "exclude": ["node_modules"]
 }
